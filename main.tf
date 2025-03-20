@@ -1,8 +1,8 @@
 resource "aws_db_instance" "tech_database" {
-  identifier           = "tech-database-${var.environment}"
-  allocated_storage    = 22
-  storage_type         = "gp3"
-#   storage_type         = "standard"
+  identifier        = "tech-database-${var.environment}"
+  allocated_storage = 22
+  storage_type      = "gp3"
+  #   storage_type         = "standard"
   engine               = "postgres"
   engine_version       = "14"
   instance_class       = "db.t3.micro"
@@ -17,12 +17,12 @@ resource "aws_db_instance" "tech_database" {
   backup_window           = "03:00-04:00"
   maintenance_window      = "mon:04:00-mon:05:00"
 
-  skip_final_snapshot     = true
-  deletion_protection     = false
-  publicly_accessible     = false
-  multi_az                = false
+  skip_final_snapshot = true
+  deletion_protection = false
+  publicly_accessible = false
+  multi_az            = false
 
-  storage_encrypted       = false
+  storage_encrypted = false
 
   performance_insights_enabled = true
 
@@ -31,7 +31,7 @@ resource "aws_db_instance" "tech_database" {
     Environment = var.environment
     Project     = var.project_name
     ManagedBy   = "terraform"
-    "TestPipe"    = "v1"
+    "TestPipe"  = "v1"
   }
 }
 
