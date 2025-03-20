@@ -2,7 +2,7 @@ resource "aws_db_instance" "tech_database" {
   identifier           = "tech-database-${var.environment}"
   allocated_storage    = 20
 #   storage_type         = "gp2"
-  storage_type         = "standart"
+  storage_type         = "standard"
   engine               = "postgres"
   engine_version       = "14"
   instance_class       = "db.t3.micro"
