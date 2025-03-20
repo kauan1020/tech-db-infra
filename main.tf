@@ -1,6 +1,6 @@
 resource "aws_db_instance" "tech_database" {
   identifier           = "tech-database-${var.environment}"
-  allocated_storage    = 22
+  allocated_storage    = 20
   storage_type         = "gp2"
   engine               = "postgres"
   engine_version       = "14"
@@ -30,6 +30,7 @@ resource "aws_db_instance" "tech_database" {
     Environment = var.environment
     Project     = var.project_name
     ManagedBy   = "terraform"
+    "TestPipe"    = "v1"
   }
 }
 
