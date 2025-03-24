@@ -40,6 +40,11 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate
+      - name: Terraform import
+        run: |
+          terraform import aws_db_subnet_group.default tech-db-subnet-group-dev               
+          terraform import aws_db_instance.tech_database tech-database-2-dev   
+          terraform import aws_security_group.postgres sg-0c3b3ddc4f9bed8a3
 
       - name: Terraform Plan
         run: terraform plan -out=tfplan
