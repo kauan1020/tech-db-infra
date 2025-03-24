@@ -1,10 +1,10 @@
 resource "aws_db_instance" "tech_database" {
   identifier           = "tech-database-2-${var.environment}"
-  allocated_storage    = 20
+  allocated_storage    = 30
   apply_immediately    = true
   storage_type         = "gp2"
   engine               = "postgres"
-  engine_version       = "14"
+  engine_version       = "14.15"
   instance_class       = "db.t3.micro"
   username             = var.db_username
   password             = var.db_password
