@@ -42,9 +42,20 @@ jobs:
         run: terraform validate
       - name: Terraform import
         run: |
-          terraform import aws_db_subnet_group.default tech-db-subnet-group-dev               
-          terraform import aws_db_instance.tech_database tech-database-2-dev   
-          terraform import aws_security_group.postgres sg-0c3b3ddc4f9bed8a3
+          if ! terraform state list | grep -q aws_db_subnet_group.default; then
+            terraform import aws_db_subnet_group.default tech-db-subnet-group-dev || echo "Import failed or already exists"
+          fi
+
+          if ! terraform state list | grep -q aws_db_instance.tech_database; then
+            terraform import aws_db_instance.tech_database tech-database-2-dev || echo "Import failed or already exists"
+          fi
+
+          if ! terraform state list | grep -q aws_security_group.postgres; then
+            terraform import aws_security_group.postgres sg-0c3b3ddc4f9bed8a3 || echo "Import failed or already exists"
+          fi
+        env:
+          TF_VAR_db_username: ${{ secrets.DB_USERNAME }}
+          TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
 
       - name: Terraform Plan
         run: terraform plan -out=tfplan
