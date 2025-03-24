@@ -1,6 +1,6 @@
 resource "aws_db_instance" "tech_database" {
   identifier           = "tech-database-2-${var.environment}"
-  allocated_storage    = 40
+  allocated_storage    = 20
   apply_immediately    = true
   storage_type         = "gp2"
   engine               = "postgres"
