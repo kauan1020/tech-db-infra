@@ -51,7 +51,7 @@ jobs:
           fi
 
           if ! terraform state list | grep -q aws_security_group.postgres; then
-            terraform import aws_security_group.postgres sg-0c3b3ddc4f9bed8a3 || echo "Import failed or already exists"
+            terraform import aws_security_group.postgres sg-0bc5c87eb708e3263 || echo "Import failed or already exists"
           fi
         env:
           TF_VAR_db_username: ${{ secrets.DB_USERNAME }}
